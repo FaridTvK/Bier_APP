@@ -1,11 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  base: '/bier_api/',
   plugins: [
     react(),
-    tailwindcss()
-  ],
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'dist/index.html',
+          dest: '.', // in dist kopieren
+          rename: '404.html'
+        }
+      ]
+    })
+  ]
 })
