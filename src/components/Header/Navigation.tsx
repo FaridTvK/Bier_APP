@@ -26,7 +26,7 @@ const Navigation = () => {
                 : "text-dark-text font-bold px-4 py-2 rounded-full hover:bg-secondary-orange hover:text-white transition-colors duration-300"
             }
           >
-            Beers
+            Beer
           </NavLink>
         </li>
         <li>
