@@ -1,41 +1,54 @@
-# Beer Explorer
+# React + TypeScript + Vite
 
-Beer Explorer is a web application that allows users to discover various types of beers, retrieve detailed information, and receive random beer suggestions. The application is developed using React and TypeScript.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project was used as an exercise to practice `useEffect`, work with APIs, and solidify React skills.
+Currently, two official plugins are available:
 
-## Project Overview
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **Frontend:** React, TypeScript
-- **Routing:** React Router
-- **Styles:** Tailwindcss
-- **API:** Beer API
+## Expanding the ESLint configuration
 
-## Project Structure
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### Main Components
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-- **App.tsx:** The main entry point of the application, managing the routing.
-- **Home:** The homepage, which links to product pages and a random product suggestion.
-- **Products:** Displays a list of all beers.
-- **Detailpage:** Shows detailed information about a selected beer.
-- **RandomProduct:** Displays a random beer suggestion.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Styles
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- **Tailwindcss:** `index.css` 
-
-### Types and Interfaces
-
-- **IBeer:** Structure for beer data.
-- **Rating:** Structure for rating data.
-
-## API and Data Fetching
-
-Data is fetched from SampleAPIs and stored in the respective components. Error handling is implemented to ensure smooth data processing.
-
-## Features
-
-- **Responsive Design:** Optimized for various screen sizes.
-- **Error Handling:** Robust handling of data loading errors.
-- **Created_By:** FaridTvK
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
