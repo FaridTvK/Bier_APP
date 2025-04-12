@@ -34,11 +34,11 @@ const Navigation = () => {
             to="/random"
             className={({ isActive }) => 
               isActive 
-                ? "bg-secondary-orange text-white font-bold px-4 py-2 rounded-full" 
+                ? "bg-secondary-orange text-white font-bold px-1 py-1 rounded-full" 
                 : "text-dark-text font-bold px-4 py-2 rounded-full hover:bg-secondary-orange hover:text-white transition-colors duration-300"
             }
           >
-            Random Beer
+            Random
           </NavLink>
         </li>
       </ul>
